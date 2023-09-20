@@ -23,11 +23,12 @@ const displayController = {
   cacheDom: function () {
     this.projectList = document.getElementById("projects-list");
     this.taskList = document.getElementById("tasks-container");
-    this.formInput = document.getElementById("form-input");
-    this.submitBtn = document.getElementById("submitBtn");
+    this.ProjectFormInput = document.getElementById("project-form-input");
+    this.submitProject = document.getElementById("submitProjectBtn");
+    this.submitTask = document.getElementById("submitTaskBtn");
   },
   initListeners: function () {
-    this.submitBtn.addEventListener("click", (event) => {
+    this.submitProject.addEventListener("click", (event) => {
       event.preventDefault();
       this.handleSubmit();
       console.log(this.projectsArr);
@@ -46,6 +47,7 @@ const displayController = {
     }
   },
   renderTasks: function (index) {
+    this.taskList.innerText = "";
     let targetProject = this.projectsArr[index];
 
     console.log(targetProject);
@@ -68,7 +70,7 @@ const displayController = {
     }
   },
   handleSubmit: function () {
-    let input = this.formInput.value;
+    let input = this.ProjectFormInput.value;
 
     this.projectsArr.push(Project(input));
   },
