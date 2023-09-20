@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Odin Project: Todo List</title>
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="../src/style.css" />
   </head>
   <body>
-    <form>
-      <label for="form-input">Project Name</label>
-      <input type="text" name="project-name" id="form-input" />
-      <button type="button" id="submitBtn">Add Project</button>
-    </form>
     <div id="projects-container">
+      <form>
+        <label for="form-input">Project Name</label>
+        <input type="text" name="project-name" id="form-input" />
+        <button type="button" id="submitBtn">Add Project</button>
+      </form>
       <ul id="projects-list"></ul>
     </div>
+    <ul id="tasks-container">
+      Tasks
+    </ul>
   </body>
 </html>

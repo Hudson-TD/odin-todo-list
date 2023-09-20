@@ -4,7 +4,7 @@ const Project = (name) => {
     tasks: [],
   };
 
-  return Object.assign({ ...project }, newTaskCreator(), taskRemover());
+  return Object.assign(project, newTaskCreator(project), taskRemover(project));
 };
 
 const newTaskCreator = (project) => ({
