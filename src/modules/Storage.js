@@ -7,7 +7,7 @@ const storageController = {
         "projects",
         JSON.stringify([
           {
-            name: "Inbox",
+            name: "Today",
             tasks: [
               {
                 title: "Eat Breakfast",

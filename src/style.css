@@ -1,11 +1,15 @@
 body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(auto, 1fr);
+  grid-template-rows: 1fr;
+  background-color: #f1f7ed;
+  width: 100vw;
+  height: 100vh;
 }
 
 #projects-container {
   grid-column: 1 2;
+  background-color: #a7c0ab;
 }
 
 #projects-list {
@@ -20,13 +24,43 @@ body {
   grid-column-end: 7;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  background-color: #ffffff;
+}
+
+.borderless {
+  outline: none;
+  background-color: none;
+}
+
+.project-title {
+  color: #c2a83e;
+}
+
+table {
+  max-width: 55%;
+}
+
+button {
+  padding: 5px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+button:active {
+  background-color: yellow;
 }
 
 th,
 td {
   padding: 5px 30px;
+}
+
+tr {
+  outline: 1px solid black;
 }
 
 .action-buttons {

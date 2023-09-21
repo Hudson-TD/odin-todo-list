@@ -6,7 +6,7 @@ const Task = (title, description, dueDate, priority) => {
     priority,
   };
 
-  return Object.assign(task, handleEdit(task));
+  return Object.assign(task);
 };
 
 export { Task };

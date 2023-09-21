@@ -1,8 +1,10 @@
 import { Project } from "./Project.js";
+import { Task } from "./Task.js";
 import { storageController } from "./Storage.js";
 
 const displayController = {
   projectsArr: null,
+  targetIndex: 0,
 
   init: function () {
     this.cacheDom();
@@ -16,15 +18,24 @@ const displayController = {
     this.taskList = document.getElementById("tasks-list");
     this.ProjectFormInput = document.getElementById("project-form-input");
     this.submitProject = document.getElementById("submitProjectBtn");
+    this.newTaskTitle = document.getElementById("task-title-input");
+    this.newTaskDescription = document.getElementById("task-description-input");
+    this.newTaskDueDate = document.getElementById("task-due-date-input");
+    this.newTaskPriority = document.getElementById("task-priority-input");
     this.submitTask = document.getElementById("submitTaskBtn");
   },
   initListeners: function () {
     this.submitProject.addEventListener("click", (event) => {
       event.preventDefault();
-      this.handleSubmit();
-      console.log(this.projectsArr);
+      this.handleProjectSubmit();
       this.projectList.innerText = "";
       this.renderProjects();
+    });
+    this.submitTask.addEventListener("click", (event) => {
+      event.preventDefault();
+      this.handleTaskSubmit();
+      this.taskList.innerText = "";
+      this.renderTasks();
     });
   },
   renderProjects: function () {
@@ -40,12 +51,13 @@ const displayController = {
       this.projectList.appendChild(line);
     }
   },
-  renderTasks: function (index) {
-    let targetProject = this.projectsArr[index];
+  renderTasks: function () {
     this.taskList.innerText = "";
-    this.currentProject.innerText = `${targetProject.name}`;
-    this.currentProject.setAttribute("id", `${index}`);
+    let targetProject = displayController.projectsArr[this.targetIndex];
+    this.currentProject.classList.add("project-title");
+    this.currentProject.setAttribute("data-index", `${this.targetIndex}`);
     let headerRow = document.createElement("tr");
+    headerRow.classList.add("borderless");
 
     let thName = document.createElement("th");
     thName.innerText = "Name";
@@ -108,19 +120,34 @@ const displayController = {
       this.taskList.appendChild(task);
     }
   },
-  handleSubmit: function () {
+  handleProjectSubmit: function () {
     let input = this.ProjectFormInput.value;
     this.projectsArr.push(Project(input));
     storageController.update();
   },
+  handleTaskSubmit: function () {
+    let selectedProject = displayController.currentProject.dataset.index;
+    this.projectsArr[selectedProject].tasks.push(
+      Task(
+        displayController.newTaskTitle.value,
+        displayController.newTaskDescription.value,
+        displayController.newTaskDueDate.value,
+        displayController.newTaskPriority.value
+      )
+    );
+    storageController.update();
+  },
   handleProjectSelect: function (event) {
-    let targetIndex = event.target.dataset.project;
-    displayController.renderTasks(targetIndex);
+    displayController.targetIndex = event.target.dataset.project;
+    displayController.currentProject.innerText = `${
+      displayController.projectsArr[displayController.targetIndex].name
+    }`;
+    displayController.renderTasks();
   },
   handleTaskComplete: function (event) {},
   handleTaskUpdate: function (event) {},
   handleTaskDelete: function (event) {
-    let projectTarget = displayController.currentProject.getAttribute("id");
+    let projectTarget = displayController.currentProject.dataset.index;
     let taskTarget = event.target.parentNode.parentNode.dataset.task;
     displayController.projectsArr[projectTarget].tasks.splice(taskTarget, 1);
     displayController.renderTasks(projectTarget);
