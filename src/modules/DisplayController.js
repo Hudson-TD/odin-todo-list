@@ -1,35 +1,13 @@
 import { Project } from "./Project.js";
+import { storageController } from "./Storage.js";
 
 const displayController = {
-  projectsArr: [
-    {
-      name: "Test Project",
-      tasks: [
-        {
-          title: "Eat Shoe",
-          description: "Eat other shoe",
-          dueDate: "9-20-2023",
-          priority: "High",
-        },
-        {
-          title: "Eat Shoe",
-          description: "Eat other shoe",
-          dueDate: "9-20-2023",
-          priority: "High",
-        },
-        {
-          title: "Eat Shoe",
-          description: "Eat other shoe",
-          dueDate: "9-20-2023",
-          priority: "High",
-        },
-      ],
-    },
-  ],
+  projectsArr: null,
 
   init: function () {
     this.cacheDom();
     this.initListeners();
+    storageController.init();
     this.renderProjects();
   },
   cacheDom: function () {
@@ -130,6 +108,7 @@ const displayController = {
   handleSubmit: function () {
     let input = this.ProjectFormInput.value;
     this.projectsArr.push(Project(input));
+    storageController.update();
   },
   handleProjectSelect: function (event) {
     let targetIndex = event.target.dataset.project;
@@ -142,6 +121,7 @@ const displayController = {
     let taskTarget = event.target.parentNode.parentNode.dataset.task;
     displayController.projectsArr[projectTarget].tasks.splice(taskTarget, 1);
     displayController.renderTasks(projectTarget);
+    storageController.update();
   },
 };
 
