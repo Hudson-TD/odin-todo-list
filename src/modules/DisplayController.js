@@ -64,23 +64,52 @@ const displayController = {
     this.taskList.innerText = "";
     this.currentProject.innerText = `${targetProject.name}`;
     this.currentProject.setAttribute("id", `${index}`);
+    let headerRow = document.createElement("tr");
+
+    let thName = document.createElement("th");
+    thName.innerText = "Name";
+    headerRow.appendChild(thName);
+
+    let thDescription = document.createElement("th");
+    thDescription.innerText = "Description";
+    headerRow.appendChild(thDescription);
+
+    let thDueDate = document.createElement("th");
+    thDueDate.innerText = "Due-Date";
+    headerRow.appendChild(thDueDate);
+
+    let thPriority = document.createElement("th");
+    thPriority.innerText = "Priority";
+    headerRow.appendChild(thPriority);
+
+    let thActions = document.createElement("th");
+    thActions.innerText = "Actions";
+    headerRow.appendChild(thActions);
+
+    this.taskList.appendChild(headerRow);
 
     for (let i = 0; i < targetProject.tasks.length; i++) {
       let task = document.createElement("tr");
       task.setAttribute("data-task", `${i}`);
+
       let taskTitle = document.createElement("td");
       taskTitle.innerText = `${targetProject.tasks[i].title}`;
       task.appendChild(taskTitle);
+
       let taskDescription = document.createElement("td");
       taskDescription.innerText = `${targetProject.tasks[i].description}`;
       task.appendChild(taskDescription);
+
       let taskDueDate = document.createElement("td");
       taskDueDate.innerText = `${targetProject.tasks[i].dueDate}`;
       task.appendChild(taskDueDate);
+
       let taskPriority = document.createElement("td");
       taskPriority.innerText = `${targetProject.tasks[i].priority}`;
       task.appendChild(taskPriority);
+
       this.taskList.appendChild(task);
+
       let taskActions = document.createElement("td");
       let completeBtn = document.createElement("button");
       completeBtn.addEventListener("click", this.handleTaskComplete);
