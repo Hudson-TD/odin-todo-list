@@ -112,6 +112,15 @@ const displayController = {
 
       let taskPriority = document.createElement("td");
       taskPriority.innerText = `${targetProject.tasks[i].priority}`;
+      if (taskPriority.innerText === "Low") {
+        taskPriority.classList.add("low");
+      } else if (taskPriority.innerText === "Normal") {
+        taskPriority.classList.add("normal");
+      } else if (taskPriority.innerText === "High") {
+        taskPriority.classList.add("high");
+      } else if (taskPriority.innerText === "Urgent") {
+        taskPriority.classList.add("urgent");
+      }
       task.appendChild(taskPriority);
 
       this.taskList.appendChild(task);
@@ -157,6 +166,11 @@ const displayController = {
       )
     );
     storageController.update();
+
+    displayController.newTaskTitle.value = "";
+    displayController.newTaskDescription.value = "";
+    displayController.newTaskDueDate.value = "";
+    displayController.newTaskPriority.value = "";
   },
   handleProjectSelect: function (event) {
     displayController.targetIndex = event.target.dataset.project;

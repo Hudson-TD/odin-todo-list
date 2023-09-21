@@ -4,11 +4,22 @@ body {
   grid-template-rows: 1fr;
   width: 100vw;
   height: 100vh;
-  background-color: #d7e8ff;
+  background-color: #848fa5;
 }
 
 #current-project {
-  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #1b263b;
+  color: white;
+  text-decoration: underline;
+  font-size: 2.5rem;
+  padding: 5px 25px;
+  border-radius: 8px;
+}
+
+p {
+  color: white;
 }
 
 #projects-container {
@@ -66,12 +77,6 @@ h4 {
   color: white;
 }
 
-.project-title,
-p {
-  color: #c2a83e;
-  font-size: 1.25rem;
-}
-
 .project {
   display: flex;
   justify-content: space-between;
@@ -83,10 +88,6 @@ p {
   color: white;
 }
 
-table {
-  max-width: 55%;
-}
-
 button {
   padding: 5px;
   background-color: white;
@@ -96,23 +97,30 @@ button {
 }
 
 button:hover {
-  background-color: #c2a83e;
-  border: 2px solid white;
+  background-color: lightgoldenrodyellow;
+  border: 2px solid black;
+}
+
+table {
+  max-width: 55%;
+  border-collapse: collapse;
+}
+
+tr {
+  outline: none;
+  border-bottom: 3px solid black;
+  border-radius: 8px;
+  text-align: center;
+}
+
+th {
+  padding: 5px 20px;
 }
 
 td {
   background-color: white;
+  padding: 5px;
   overflow: hidden;
-}
-
-tr {
-  outline: 2px solid #c2a83e;
-  border-radius: 8px;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: center;
 }
 
 #utilities {
@@ -123,4 +131,20 @@ tr {
 
 .hidden {
   display: none;
+}
+
+.low {
+  background-color: rgb(189, 255, 214);
+}
+
+.normal {
+  background-color: rgb(255, 255, 189);
+}
+
+.high {
+  background-color: rgb(253, 193, 153);
+}
+
+.urgent {
+  background-color: rgb(255, 154, 154);
 }
