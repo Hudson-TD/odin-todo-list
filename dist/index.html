@@ -6,36 +6,53 @@
     <title>The Odin Project: Todo List</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="../src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
     <div id="projects-container">
+      <br />
+      <br />
+      <br />
       <form>
         <label for="project-form-input">Project Name</label>
         <input type="text" name="project-name" id="project-form-input" />
         <button type="button" id="submitProjectBtn">Add Project</button>
       </form>
+      <br />
       <ul id="projects-list"></ul>
+      <br />
+      <br />
+      <form>
+        <label for="task-title-input">Name</label>
+        <input type="text" name="project-name" id="task-title-input" />
+        <label for="task-description-input">Description</label>
+        <input type="text" name="project-name" id="task-description-input" />
+        <label for="task-due-date-input">Due Date</label>
+        <input type="date" name="project-name" id="task-due-date-input" />
+        <label for="task-priority-input">Priority</label>
+        <select id="task-priority-input">
+          <option value="Low">Low</option>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+        <button type="button" id="submitTaskBtn">Add Task</button>
+      </form>
     </div>
-    <div></div>
-    <form>
-      <label for="task-title-input">Name</label>
-      <input type="text" name="project-name" id="task-title-input" />
-      <label for="task-description-input">Description</label>
-      <input type="text" name="project-name" id="task-description-input" />
-      <label for="task-due-date-input">Due Date</label>
-      <input type="date" name="project-name" id="task-due-date-input" />
-      <label for="task-priority-input">Priority</label>
-      <select id="task-priority-input">
-        <option value="Low">Low</option>
-        <option value="Normal">Normal</option>
-        <option value="High">High</option>
-        <option value="Urgent">Urgent</option>
-      </select>
-
-      <button type="button" id="submitTaskBtn">Add Task</button>
-    </form>
-    <ul id="tasks-container">
-      Tasks
-    </ul>
+    <div id="tasks-container">
+      <h2 id="current-project"></h2>
+      <table id="tasks-list">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Due-Date</th>
+          <th>Priority</th>
+          <th>Actions</th>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>

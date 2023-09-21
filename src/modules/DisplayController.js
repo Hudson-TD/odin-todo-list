@@ -11,6 +11,18 @@ const displayController = {
           dueDate: "9-20-2023",
           priority: "High",
         },
+        {
+          title: "Eat Shoe",
+          description: "Eat other shoe",
+          dueDate: "9-20-2023",
+          priority: "High",
+        },
+        {
+          title: "Eat Shoe",
+          description: "Eat other shoe",
+          dueDate: "9-20-2023",
+          priority: "High",
+        },
       ],
     },
   ],
@@ -22,7 +34,8 @@ const displayController = {
   },
   cacheDom: function () {
     this.projectList = document.getElementById("projects-list");
-    this.taskList = document.getElementById("tasks-container");
+    this.currentProject = document.getElementById("current-project");
+    this.taskList = document.getElementById("tasks-list");
     this.ProjectFormInput = document.getElementById("project-form-input");
     this.submitProject = document.getElementById("submitProjectBtn");
     this.submitTask = document.getElementById("submitTaskBtn");
@@ -47,36 +60,59 @@ const displayController = {
     }
   },
   renderTasks: function (index) {
-    this.taskList.innerText = "";
     let targetProject = this.projectsArr[index];
+    this.taskList.innerText = "";
+    this.currentProject.innerText = `${targetProject.name}`;
+    this.currentProject.setAttribute("id", `${index}`);
 
-    console.log(targetProject);
     for (let i = 0; i < targetProject.tasks.length; i++) {
-      let title = document.createElement("li");
-      title.textContent = `${targetProject.tasks[i].title}`;
-      this.taskList.appendChild(title);
-
-      let description = document.createElement("li");
-      description.textContent = `${targetProject.tasks[i].description}`;
-      this.taskList.appendChild(description);
-
-      let dueDate = document.createElement("li");
-      dueDate.textContent = `${targetProject.tasks[i].dueDate}`;
-      this.taskList.appendChild(dueDate);
-
-      let priority = document.createElement("li");
-      priority.textContent = `${targetProject.tasks[i].priority}`;
-      this.taskList.appendChild(priority);
+      let task = document.createElement("tr");
+      task.setAttribute("data-task", `${i}`);
+      let taskTitle = document.createElement("td");
+      taskTitle.innerText = `${targetProject.tasks[i].title}`;
+      task.appendChild(taskTitle);
+      let taskDescription = document.createElement("td");
+      taskDescription.innerText = `${targetProject.tasks[i].description}`;
+      task.appendChild(taskDescription);
+      let taskDueDate = document.createElement("td");
+      taskDueDate.innerText = `${targetProject.tasks[i].dueDate}`;
+      task.appendChild(taskDueDate);
+      let taskPriority = document.createElement("td");
+      taskPriority.innerText = `${targetProject.tasks[i].priority}`;
+      task.appendChild(taskPriority);
+      this.taskList.appendChild(task);
+      let taskActions = document.createElement("td");
+      let completeBtn = document.createElement("button");
+      completeBtn.addEventListener("click", this.handleTaskComplete);
+      completeBtn.innerText = `Complete`;
+      taskActions.appendChild(completeBtn);
+      let updateBtn = document.createElement("button");
+      updateBtn.innerText = `Update`;
+      updateBtn.addEventListener("click", this.handleTaskUpdate);
+      taskActions.appendChild(updateBtn);
+      let deleteBtn = document.createElement("button");
+      deleteBtn.innerText = `Delete`;
+      deleteBtn.addEventListener("click", this.handleTaskDelete);
+      taskActions.appendChild(deleteBtn);
+      task.appendChild(taskActions);
+      this.taskList.appendChild(task);
     }
   },
   handleSubmit: function () {
     let input = this.ProjectFormInput.value;
-
     this.projectsArr.push(Project(input));
   },
   handleProjectSelect: function (event) {
     let targetIndex = event.target.dataset.project;
     displayController.renderTasks(targetIndex);
+  },
+  handleTaskComplete: function (event) {},
+  handleTaskUpdate: function (event) {},
+  handleTaskDelete: function (event) {
+    let projectTarget = displayController.currentProject.getAttribute("id");
+    let taskTarget = event.target.parentNode.parentNode.dataset.task;
+    displayController.projectsArr[projectTarget].tasks.splice(taskTarget, 1);
+    displayController.renderTasks(projectTarget);
   },
 };
 
