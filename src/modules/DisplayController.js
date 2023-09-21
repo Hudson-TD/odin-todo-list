@@ -28,6 +28,9 @@ const displayController = {
     });
   },
   renderProjects: function () {
+    if (this.projectsArr === null) {
+      window.location.reload();
+    }
     for (let i = 0; i < this.projectsArr.length; i++) {
       let line = document.createElement("button");
       line.classList.add("project");
