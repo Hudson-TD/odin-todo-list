@@ -16,6 +16,7 @@ const displayController = {
     this.projectList = document.getElementById("projects-list");
     this.currentProject = document.getElementById("current-project");
     this.taskList = document.getElementById("tasks-list");
+    this.utilitiesEl = document.getElementById("utilities");
     this.ProjectFormInput = document.getElementById("project-form-input");
     this.submitProject = document.getElementById("submitProjectBtn");
     this.newTaskTitle = document.getElementById("task-title-input");
@@ -142,6 +143,7 @@ const displayController = {
     displayController.currentProject.innerText = `${
       displayController.projectsArr[displayController.targetIndex].name
     }`;
+    displayController.utilitiesEl.classList.remove("hidden");
     displayController.renderTasks();
   },
   handleTaskComplete: function (event) {},

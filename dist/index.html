@@ -24,24 +24,26 @@
       </form>
       <br />
       <br />
-      <form>
-        <label for="task-title-input">Name</label>
-        <input type="text" name="project-name" id="task-title-input" />
-        <label for="task-description-input">Description</label>
-        <input type="text" name="project-name" id="task-description-input" />
-        <label for="task-due-date-input">Due Date</label>
-        <input type="date" name="project-name" id="task-due-date-input" />
-        <label for="task-priority-input">Priority</label>
-        <select id="task-priority-input">
-          <option value="Low">Low</option>
-          <option value="Normal">Normal</option>
-          <option value="High">High</option>
-          <option value="Urgent">Urgent</option>
-        </select>
-        <button type="button" id="submitTaskBtn">Add Task</button>
-      </form>
     </div>
     <div id="tasks-container" class="">
+      <div id="utilities" class="hidden">
+        <form>
+          <label for="task-title-input">Name</label>
+          <input type="text" name="project-name" id="task-title-input" />
+          <label for="task-description-input">Description</label>
+          <input type="text" name="project-name" id="task-description-input" />
+          <label for="task-due-date-input">Due Date</label>
+          <input type="date" name="project-name" id="task-due-date-input" />
+          <label for="task-priority-input">Priority</label>
+          <select id="task-priority-input">
+            <option value="Low">Low</option>
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+          <button type="button" id="submitTaskBtn">Add Task</button>
+        </form>
+      </div>
       <h2 id="current-project"></h2>
       <table id="tasks-list"></table>
     </div>
