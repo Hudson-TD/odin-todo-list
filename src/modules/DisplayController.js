@@ -1,6 +1,7 @@
 import { Project } from "./Project.js";
 import { Task } from "./Task.js";
 import { storageController } from "./Storage.js";
+import { userUtilities } from "./utils.js";
 
 const displayController = {
   projectsArr: null,
@@ -10,6 +11,7 @@ const displayController = {
     this.cacheDom();
     this.initListeners();
     storageController.init();
+    this.setDate();
     this.renderProjects();
   },
   cacheDom: function () {
@@ -24,6 +26,7 @@ const displayController = {
     this.newTaskDueDate = document.getElementById("task-due-date-input");
     this.newTaskPriority = document.getElementById("task-priority-input");
     this.submitTask = document.getElementById("submitTaskBtn");
+    this.dateText = document.getElementById("current-date");
   },
   initListeners: function () {
     this.submitProject.addEventListener("click", (event) => {
@@ -39,16 +42,25 @@ const displayController = {
       this.renderTasks();
     });
   },
+  setDate: function () {
+    let date = userUtilities.generateDateValue();
+    this.dateText.innerText = `${date}`;
+  },
   renderProjects: function () {
     if (this.projectsArr === null) {
       window.location.reload();
     }
     for (let i = 0; i < this.projectsArr.length; i++) {
       let line = document.createElement("button");
+      let x = document.createElement("button");
+      x.classList.add("delete-button");
+      x.innerText = "X";
+      x.addEventListener("click", this.handleProjectDelete);
       line.classList.add("project");
       line.innerText = `${this.projectsArr[i].name}`;
       line.setAttribute("data-project", `${i}`);
       line.addEventListener("click", this.handleProjectSelect);
+      line.appendChild(x);
       this.projectList.appendChild(line);
     }
   },
@@ -125,6 +137,14 @@ const displayController = {
     let input = this.ProjectFormInput.value;
     this.projectsArr.push(Project(input));
     storageController.update();
+  },
+  handleProjectDelete: function (event) {
+    event.stopPropagation();
+    let project = event.target.parentNode.dataset.project;
+    displayController.projectsArr.splice(project, 1);
+    storageController.update();
+    window.location.reload();
+    displayController.renderProjects();
   },
   handleTaskSubmit: function () {
     let selectedProject = displayController.currentProject.dataset.index;

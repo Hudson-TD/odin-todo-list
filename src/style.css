@@ -2,14 +2,20 @@ body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr;
-  background-color: #f1f7ed;
   width: 100vw;
   height: 100vh;
+  background-color: #d7e8ff;
+}
+
+#current-project {
+  font-size: 2rem;
 }
 
 #projects-container {
   grid-column: 1 2;
-  background-color: #a7c0ab;
+  background-color: #1b263b;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 #projects-list {
@@ -19,23 +25,62 @@ body {
   gap: 20px;
 }
 
+input {
+  padding: 5px;
+  background-color: white;
+}
+
+#project-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 20px;
+}
+
 #tasks-container {
   grid-column-start: 2;
   grid-column-end: 7;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #ffffff;
+}
+table {
+  width: 90%;
 }
 
 .borderless {
   outline: none;
   background-color: none;
 }
+h1 {
+  text-align: center;
+}
 
-.project-title {
+label,
+h1,
+h2,
+h3,
+h4 {
+  color: white;
+}
+
+.project-title,
+p {
   color: #c2a83e;
+  font-size: 1.25rem;
+}
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  background-color: rgb(189, 37, 37);
+  color: white;
 }
 
 table {
@@ -50,17 +95,19 @@ button {
   border-radius: 8px;
 }
 
-button:active {
-  background-color: yellow;
+button:hover {
+  background-color: #c2a83e;
+  border: 2px solid white;
 }
 
-th,
 td {
-  padding: 5px 30px;
+  background-color: white;
+  overflow: hidden;
 }
 
 tr {
-  outline: 1px solid black;
+  outline: 2px solid #c2a83e;
+  border-radius: 8px;
 }
 
 .action-buttons {
@@ -68,8 +115,10 @@ tr {
   justify-content: center;
 }
 
-.utilities {
-  background-color: aqua;
+#utilities {
+  background-color: #1b263b;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .hidden {
