@@ -143,9 +143,10 @@ const displayController = {
     }
   },
   handleProjectSubmit: function () {
-    let input = this.ProjectFormInput.value;
-    this.projectsArr.push(Project(input));
+    this.projectsArr.push(Project(displayController.ProjectFormInput.value));
     storageController.update();
+
+    displayController.ProjectFormInput.value = "";
   },
   handleProjectDelete: function (event) {
     event.stopPropagation();
