@@ -17,6 +17,7 @@ const displayController = {
   cacheDom: function () {
     this.projectList = document.getElementById("projects-list");
     this.currentProject = document.getElementById("current-project");
+    this.tasksContainer = document.getElementById("tasks-container");
     this.taskList = document.getElementById("tasks-list");
     this.utilitiesEl = document.getElementById("utilities");
     this.ProjectFormInput = document.getElementById("project-form-input");
@@ -126,16 +127,17 @@ const displayController = {
       this.taskList.appendChild(task);
 
       let taskActions = document.createElement("td");
-      let completeBtn = document.createElement("button");
-      completeBtn.addEventListener("click", this.handleTaskComplete);
-      completeBtn.innerText = `Complete`;
-      taskActions.appendChild(completeBtn);
-      let updateBtn = document.createElement("button");
-      updateBtn.innerText = `Update`;
-      updateBtn.addEventListener("click", this.handleTaskUpdate);
-      taskActions.appendChild(updateBtn);
+      // let completeBtn = document.createElement("button");
+      // completeBtn.addEventListener("click", this.handleTaskComplete);
+      // completeBtn.innerText = `Complete`;
+      // taskActions.appendChild(completeBtn);
+      // let updateBtn = document.createElement("button");
+      // updateBtn.innerText = `Update`;
+      // updateBtn.addEventListener("click", this.handleTaskUpdate);
+      // taskActions.appendChild(updateBtn);
       let deleteBtn = document.createElement("button");
-      deleteBtn.innerText = `Delete`;
+      deleteBtn.innerText = `X`;
+      deleteBtn.setAttribute("id", "delete-task");
       deleteBtn.addEventListener("click", this.handleTaskDelete);
       taskActions.appendChild(deleteBtn);
       task.appendChild(taskActions);
@@ -171,18 +173,17 @@ const displayController = {
     displayController.newTaskTitle.value = "";
     displayController.newTaskDescription.value = "";
     displayController.newTaskDueDate.value = "";
-    displayController.newTaskPriority.value = "";
   },
   handleProjectSelect: function (event) {
     displayController.targetIndex = event.target.dataset.project;
     displayController.currentProject.innerText = `${
       displayController.projectsArr[displayController.targetIndex].name
     }`;
-    displayController.utilitiesEl.classList.remove("hidden");
+    displayController.tasksContainer.classList.remove("hiddenEl");
     displayController.renderTasks();
   },
-  handleTaskComplete: function (event) {},
-  handleTaskUpdate: function (event) {},
+  // handleTaskComplete: function (event) {},
+  // handleTaskUpdate: function (event) {},
   handleTaskDelete: function (event) {
     let projectTarget = displayController.currentProject.dataset.index;
     let taskTarget = event.target.parentNode.parentNode.dataset.task;

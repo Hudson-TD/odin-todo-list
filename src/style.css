@@ -4,7 +4,40 @@ body {
   grid-template-rows: 1fr;
   width: 100vw;
   height: 100vh;
-  background-color: #848fa5;
+  background-color: #adb7cc;
+}
+
+#projects-container {
+  grid-column: 1 2;
+  background-color: #1b263b;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#utilities {
+  background-color: #1b263b;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#projects-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 20px;
+}
+
+.delete-button,
+#delete-task {
+  background-color: rgb(189, 37, 37);
+  color: white;
+}
+
+#project-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 20px;
 }
 
 #current-project {
@@ -18,34 +51,10 @@ body {
   border-radius: 8px;
 }
 
-p {
-  color: white;
-}
-
-#projects-container {
-  grid-column: 1 2;
-  background-color: #1b263b;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-#projects-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto, 1fr);
-  gap: 20px;
-}
-
-input {
-  padding: 5px;
-  background-color: white;
-}
-
-#project-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto, 1fr);
-  gap: 20px;
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #tasks-container {
@@ -57,16 +66,14 @@ input {
   justify-content: flex-start;
   align-items: center;
 }
+
 table {
   width: 90%;
 }
 
-.borderless {
-  outline: none;
-  background-color: none;
-}
 h1 {
   text-align: center;
+  font-size: 2.5rem;
 }
 
 label,
@@ -77,15 +84,13 @@ h4 {
   color: white;
 }
 
-.project {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+p {
+  color: white;
 }
 
-.delete-button {
-  background-color: rgb(189, 37, 37);
-  color: white;
+input {
+  padding: 5px;
+  background-color: white;
 }
 
 button {
@@ -104,33 +109,26 @@ button:hover {
 table {
   max-width: 55%;
   border-collapse: collapse;
-}
-
-tr {
-  outline: none;
-  border-bottom: 3px solid black;
-  border-radius: 8px;
-  text-align: center;
+  border: 2px solid #d3af37;
 }
 
 th {
   padding: 5px 20px;
+  background-color: #1b263b;
+  color: white;
+  text-decoration: underline;
+}
+
+tr {
+  outline: none;
+  border-radius: 8px;
+  text-align: center;
 }
 
 td {
   background-color: white;
   padding: 5px;
   overflow: hidden;
-}
-
-#utilities {
-  background-color: #1b263b;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.hidden {
-  display: none;
 }
 
 .low {
@@ -147,4 +145,17 @@ td {
 
 .urgent {
   background-color: rgb(255, 154, 154);
+}
+
+.golden {
+  color: #d3af37;
+}
+
+.hiddenEl {
+  visibility: hidden;
+}
+
+.borderless {
+  outline: none;
+  background-color: none;
 }
