@@ -1,0 +1,161 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr;
+  width: 100vw;
+  height: 100vh;
+  background-color: #adb7cc;
+}
+
+#projects-container {
+  grid-column: 1 2;
+  background-color: #1b263b;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#utilities {
+  background-color: #1b263b;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#projects-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 20px;
+}
+
+.delete-button,
+#delete-task {
+  background-color: rgb(189, 37, 37);
+  color: white;
+}
+
+#project-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 20px;
+}
+
+#current-project {
+  display: flex;
+  justify-content: center;
+  background-color: #1b263b;
+  color: white;
+  text-decoration: underline;
+  font-size: 2.5rem;
+  padding: 5px 25px;
+  border-radius: 8px;
+}
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#tasks-container {
+  grid-column-start: 2;
+  grid-column-end: 7;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+table {
+  width: 90%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+label,
+h1,
+h2,
+h3,
+h4 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+input {
+  padding: 5px;
+  background-color: white;
+}
+
+button {
+  padding: 5px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: lightgoldenrodyellow;
+  border: 2px solid black;
+}
+
+table {
+  max-width: 55%;
+  border-collapse: collapse;
+  border: 2px solid #d3af37;
+}
+
+th {
+  padding: 5px 20px;
+  background-color: #1b263b;
+  color: white;
+  text-decoration: underline;
+}
+
+tr {
+  outline: none;
+  border-radius: 8px;
+  text-align: center;
+}
+
+td {
+  background-color: white;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.low {
+  background-color: rgb(189, 255, 214);
+}
+
+.normal {
+  background-color: rgb(255, 255, 189);
+}
+
+.high {
+  background-color: rgb(253, 193, 153);
+}
+
+.urgent {
+  background-color: rgb(255, 154, 154);
+}
+
+.golden {
+  color: #d3af37;
+}
+
+.hiddenEl {
+  visibility: hidden;
+}
+
+.borderless {
+  outline: none;
+  background-color: none;
+}
