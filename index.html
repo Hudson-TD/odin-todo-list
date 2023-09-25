@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Odin Project: Todo List</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="../src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div id="projects-container">
+      <div id="welcome-container">
+        <h1 class="golden">On-Trak</h1>
+        <p class="golden" id="current-date"></p>
+      </div>
+      <h4>My Projects:</h4>
+      <div id="projects-list"></div>
+      <br />
+      <h4>Create Project:</h4>
+      <form id="project-form">
+        <input
+          type="text"
+          name="project-name"
+          id="project-form-input"
+          placeholder="Project name"
+        />
+        <button type="button" id="submitProjectBtn">Submit</button>
+      </form>
+      <br />
+      <br />
+    </div>
+    <div id="tasks-container" class="hiddenEl">
+      <div id="utilities">
+        <form>
+          <label for="task-title-input">Name</label>
+          <input type="text" name="project-name" id="task-title-input" />
+          <label for="task-description-input">Description</label>
+          <input type="text" name="project-name" id="task-description-input" />
+          <label for="task-due-date-input">Due Date</label>
+          <input type="date" name="project-name" id="task-due-date-input" />
+          <label for="task-priority-input">Priority</label>
+          <select id="task-priority-input">
+            <option value="Low">Low</option>
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+          <button type="button" id="submitTaskBtn">Add Task</button>
+        </form>
+      </div>
+      <h2 id="current-project"></h2>
+      <table id="tasks-list"></table>
+    </div>
+  </body>
+</html>
